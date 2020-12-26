@@ -1,5 +1,8 @@
-import React, { Component }   from 'react'
-import { MuiThemeProvider }   from '@material-ui/core/styles'
+import React, { Component }        from 'react'
+import { connect }                 from 'react-redux'
+import { bindActionCreators }      from 'redux'
+import { MuiThemeProvider }        from '@material-ui/core/styles'
+import * as providerActionCreators from 'core/actions/actions-provider'
 import {
   HashRouter,
   Route,
@@ -14,6 +17,9 @@ import Footer                   from './components/Footer'
 import './styles.scss' // global styles
 
 class App extends Component {
+  componentDidMount() {
+    /*  */
+  }
   render() {
     return (
       <MuiThemeProvider theme={theme}>
@@ -34,4 +40,12 @@ class App extends Component {
   }
 }
 
-export default App
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: {
+      provider: bindActionCreators(providerActionCreators, dispatch)
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(App)
