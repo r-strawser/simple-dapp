@@ -1,4 +1,5 @@
 import React, { Component }        from 'react'
+import PropTypes                   from 'prop-types'
 import { connect }                 from 'react-redux'
 import { bindActionCreators }      from 'redux'
 import { MuiThemeProvider }        from '@material-ui/core/styles'
@@ -19,6 +20,8 @@ import './styles.scss' // global styles
 class App extends Component {
   componentDidMount() {
     /*  */
+    const { actions } = this.props
+    actions.provider.setProvider()
   }
   render() {
     return (
@@ -46,6 +49,10 @@ function mapDispatchToProps(dispatch) {
       provider: bindActionCreators(providerActionCreators, dispatch)
     }
   }
+}
+
+App.propTypes = {
+  actions: PropTypes.shape({}).isRequired
 }
 
 export default connect(null, mapDispatchToProps)(App)
