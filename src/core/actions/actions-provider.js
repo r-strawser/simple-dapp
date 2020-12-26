@@ -11,13 +11,13 @@ export function setProvider() {
 
       // enable() returns a promise that opens pops up window to users asking
       // for access, after user clicks yes, they approve as an array, and you
-      // you pluck off first account, now critical step is you have to set the 
+      // you pluck off first account, now critical step is you have to set the
       // web3 default account with the account address that you get from metamask...
       // web3Provider.eth.defaultAccount = defaultAccount
       ethereum.enable().then((account) => {
         const defaultAccount = account[0]
         web3Provider.eth.defaultAccount = defaultAccount
-        
+
         // after above user gave access to account number, then below code
         // sets provider and sets web3.js
         dispatch((() => {
