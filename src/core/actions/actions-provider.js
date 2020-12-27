@@ -22,7 +22,8 @@ export function setProvider() {
         // sets provider and sets web3.js
         dispatch((() => {
           return {
-            type: constants.SET_PROVIDER, web3Provider
+            type: constants.SET_PROVIDER, 
+            web3Provider
           }
         })())
       })
